@@ -22,7 +22,6 @@ Setup edxorg\_courses app
     > ‘EDXORG\_COURSE\_DETAIL\_API’:"https://api.edx.org/enterprise/v1/enterprise-catalogs/",
 
 3.  In lms/env/common.py,
-    > \
     > Add ‘edxorg\_courses’ into installed apps\
     > Add “OPENEDX\_ROOT / 'features' / 'edxorg\_courses' /
     > 'templates',” in list of MAKO\_TEMPLATE\_DIRS\_BASE
@@ -42,6 +41,5 @@ Setup edxorg\_courses app
     > python manage.py lms makemigrations --settings=”production”\
     > python manage.py lms migrate --settings=”production”
 
-7.  From LMS shell run below command for saving edxorg courses to
-    > database and reindex into ElasticSearch.\
+7.  From LMS shell run below command for saving edxorg courses to database and reindex into ElasticSearch.
     > python manage.py lms set\_edxorg\_courses --settings=”production”
