@@ -53,3 +53,4 @@ enterprise LMS or another system.
     source ~/edxapp_env 
     cd ~/edx-platform/
     python manage.py lms set_edxorg_courses --settings=”production”
+    
