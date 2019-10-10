@@ -27,24 +27,29 @@ enterprise LMS or another system.
     ```
 3.  Add in to the settings file (i.e. in edx-platform/lms/envs/common.py):
     ```python
-     INSTALLED_APPS += ('edx_enterprise_api',)
-     
-     MAKO_TEMPLATE_DIRS_BASE +=[OPENEDX_ROOT / 'features' / 'edx_enterprise_api']
+    INSTALLED_APPS += ('edx_enterprise_api',)
+    MAKO_TEMPLATE_DIRS_BASE +=[OPENEDX_ROOT / 'features' / 'edx_enterprise_api']
+    'ENABLE_COURSE_DISCOVERY': True
+    'ENABLE_COURSEWARE_SEARCH': True
     ```
-4.  In lms/urls.py include app URLs:
-    > url(r'', include('openedx.features.edxorg\_courses.urls')),
-
+4.  Add to LMS URLs (i.e. in edx-platform/lms/urls.py):
+    ```python
+    url(r'', include('openedx.features.edxorg\_courses.urls')),
+    ```
 5.  In /lms/templates/discovery/course\_card.underscore change second
-    > line as below\
-    > &lt;% if (org == 'edX Courses') { %&gt;\
-    > &lt;a href="/courses/&lt;%- course %&gt;/course\_about"&gt;\
-    > &lt;% } else { %&gt;\
-    > &lt;a href="/courses/&lt;%- course %&gt;/about"&gt;\
-    > &lt;% } %&gt;
+    ```html
+    <% if (org == 'edX Courses') { %>
+        <a href="/courses/<%- course %>/course_about">
+    <% } else { %>
+        <a href="/courses/<%- course %>/about">
+    <% } %>
+    ```
 
-6.  Make LMS migrations
-    > python manage.py lms makemigrations --settings=”production”\
-    > python manage.py lms migrate --settings=”production”
+6. Apply migration
 
-7.  From LMS shell run below command for saving edxorg courses to database and reindex into ElasticSearch.
-    > python manage.py lms set\_edxorg\_courses --settings=”production”
+7. Run in the console:
+    ```python
+    sudo -H -u edxapp bash
+    source ~/edxapp_env 
+    cd ~/edx-platform/
+    python manage.py lms set_edxorg_courses --settings=”production”
