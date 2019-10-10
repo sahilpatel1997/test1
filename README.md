@@ -19,11 +19,11 @@ enterprise LMS or another system.
 
 2.  Add json config file:
     ```python
-     ‘EDX_ETERPRISE_API_CLIENT_ID’: " Your edX Enterprise Client Id",
-     ‘EDX_ETERPRISE_API_CLIENT_SECRET’: "Your edX Enterprise Client Secret",
-     ‘EDX_ETERPRISE_ACCESS_TOKEN_API’: "https://api.edx.org/oauth2/v1/access_token",
-     ‘EDX_ETERPRISE_CLIENT_CATALOG_DETAIL_API’: "https://api.edx.org/enterprise/v1/enterprise-catalogs/”,
-     ‘EDX_ETERPRISE_COURSE_DETAIL_API’:"https://api.edx.org/enterprise/v1/enterprise-catalogs/",
+    EDX_ETERPRISE_API_CLIENT_ID’: " Your edX Enterprise Client Id",
+    EDX_ETERPRISE_API_CLIENT_SECRET’: "Your edX Enterprise Client Secret",
+    EDX_ETERPRISE_ACCESS_TOKEN_API’: "https://api.edx.org/oauth2/v1/access_token",
+    EDX_ETERPRISE_CLIENT_CATALOG_DETAIL_API’: "https://api.edx.org/enterprise/v1/enterprise-catalogs/”,
+    EDX_ETERPRISE_COURSE_DETAIL_API’:"https://api.edx.org/enterprise/v1/enterprise-catalogs/",
     ```
 3.  Add in to the settings file (i.e. in edx-platform/lms/envs/common.py):
     ```python
