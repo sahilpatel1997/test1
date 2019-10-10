@@ -48,9 +48,9 @@ enterprise LMS or another system.
 6. Apply migration
 
 7. Run in the console:
-    ```python
+    ```bash
     sudo -H -u edxapp bash
     source ~/edxapp_env 
     cd ~/edx-platform/
-    python manage.py lms set_edxorg_courses --settings=”production”
+    python manage.py lms set_edxorg_courses --settings=aws
     
