@@ -32,11 +32,21 @@ enterprise LMS or another system.
     'ENABLE_COURSE_DISCOVERY': True
     'ENABLE_COURSEWARE_SEARCH': True
     ```
-4.  Add to LMS URLs (i.e. in edx-platform/lms/urls.py):
+    
+4.  Add to aws config file (i.e in edx-platform/lms/envs/aws.py)
+    ```python
+    ################ EDX ENTERPRISE TOKENS  #############################
+    EDX_ENTERPRISE_API_CLIENT_ID = ENV_TOKENS.get('EDX_ENTERPRISE_API_CLIENT_ID', "EDX_ENTERPRISE_API_CLIENT_ID")
+    EDX_ENTERPRISE_API_CLIENT_SECRET = ENV_TOKENS.get('EDX_ENTERPRISE_API_CLIENT_SECRET', "EDX_ENTERPRISE_API_CLIENT_SECRET")
+    EDX_ENTERPRISE_ACCESS_TOKEN_API = ENV_TOKENS.get('EDX_ENTERPRISE_ACCESS_TOKEN_API', "EDX_ENTERPRISE_ACCESS_TOKEN_API")
+    EDX_ENTERPRISE_CLIENT_CATALOG_DETAIL_API = ENV_TOKENS.get('EDX_ENTERPRISE_CLIENT_CATALOG_DETAIL_API', "EDX_ENTERPRISE_CLIENT_CATALOG_DETAIL_API")
+    EDX_ENTERPRISE_COURSE_DETAIL_API = ENV_TOKENS.get('EDX_ENTERPRISE_COURSE_DETAIL_API', "EDX_ENTERPRISE_COURSE_DETAIL_API")
+    ```  
+5.  Add to LMS URLs (i.e. in edx-platform/lms/urls.py):
     ```python
     url(r'', include('openedx.features.edx_enterprise_api.urls')),
     ```
-5.  In /lms/templates/discovery/course\_card.underscore change second line as below
+6.  In /lms/templates/discovery/course\_card.underscore change second line as below
     ```html
     <% if (org == 'edX Courses') { %>
         <a href="/courses/<%- course %>/course_about">
@@ -45,12 +55,13 @@ enterprise LMS or another system.
     <% } %>
     ```
 
-6. Apply migration
+7. Apply migration
 
-7. Run in the console:
+8. Run in the console:
     ```bash
     sudo -H -u edxapp bash
     source ~/edxapp_env 
     cd ~/edx-platform/
     python manage.py lms set_edxorg_courses --settings=aws
+    ```
     
