@@ -28,7 +28,7 @@ enterprise LMS or another system.
 3.  Add in to the settings file (i.e. in edx-platform/lms/envs/common.py):
     ```python
     INSTALLED_APPS += ('openedx.features.edx_enterprise_api',)
-    MAKO_TEMPLATE_DIRS_BASE +=[OPENEDX_ROOT / 'features' / 'edx_enterprise_api']
+    MAKO_TEMPLATE_DIRS_BASE +=[OPENEDX_ROOT / 'features' / 'edx_enterprise_api' / 'templates']
     'ENABLE_COURSE_DISCOVERY': True
     'ENABLE_COURSEWARE_SEARCH': True
     ```
