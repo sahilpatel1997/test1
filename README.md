@@ -46,7 +46,11 @@ enterprise LMS or another system.
     ```python
     url(r'', include('openedx.features.edx_enterprise_api.urls')),
     ```
-6.  In /lms/templates/discovery/course\_card.underscore change second line as below
+6.  Replace only third line in /lms/templates/discovery/course\_card.underscore:
+    ```html
+    <a href="/courses/<%- course %>/about">
+    ```
+    to
     ```html
     <% if (org == 'edX Courses') { %>
         <a href="/courses/<%- course %>/course_about">
