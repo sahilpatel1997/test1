@@ -29,11 +29,14 @@ enterprise LMS or another system.
     ```python
     INSTALLED_APPS += ('openedx.features.edx_enterprise_api',)
     MAKO_TEMPLATE_DIRS_BASE +=[OPENEDX_ROOT / 'features' / 'edx_enterprise_api' / 'templates']
+    ```
+4. Make sure below flag are True in settings file:
+    ```python
     'ENABLE_COURSE_DISCOVERY': True
     'ENABLE_COURSEWARE_SEARCH': True
     ```
     
-4.  Add to aws config file (i.e in edx-platform/lms/envs/aws.py)
+5.  Add to aws config file (i.e in edx-platform/lms/envs/aws.py)
     ```python
     ################ EDX ENTERPRISE TOKENS  #############################
     EDX_ENTERPRISE_API_CLIENT_ID = ENV_TOKENS.get('EDX_ENTERPRISE_API_CLIENT_ID', "EDX_ENTERPRISE_API_CLIENT_ID")
@@ -42,11 +45,11 @@ enterprise LMS or another system.
     EDX_ENTERPRISE_CLIENT_CATALOG_DETAIL_API = ENV_TOKENS.get('EDX_ENTERPRISE_CLIENT_CATALOG_DETAIL_API', "EDX_ENTERPRISE_CLIENT_CATALOG_DETAIL_API")
     EDX_ENTERPRISE_COURSE_DETAIL_API = ENV_TOKENS.get('EDX_ENTERPRISE_COURSE_DETAIL_API', "EDX_ENTERPRISE_COURSE_DETAIL_API")
     ```  
-5.  Add to LMS URLs (i.e. in edx-platform/lms/urls.py):
+6.  Add to LMS URLs (i.e. in edx-platform/lms/urls.py):
     ```python
     url(r'', include('openedx.features.edx_enterprise_api.urls')),
     ```
-6.  Replace only third line in /lms/templates/discovery/course\_card.underscore:
+7.  Replace only third line in /lms/templates/discovery/course\_card.underscore:
     ```html
     <a href="/courses/<%- course %>/about">
     ```
@@ -59,9 +62,9 @@ enterprise LMS or another system.
     <% } %>
     ```
 
-7. Apply migration
+8. Apply migration
 
-8. Run in the console:
+9. Run in the console:
     ```bash
     sudo -H -u edxapp bash
     source ~/edxapp_env 
