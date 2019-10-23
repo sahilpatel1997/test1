@@ -17,7 +17,7 @@ enterprise LMS or another system.
 
 1.  Put edx_enterprise_api app to edx-platform -&gt; openedx -&gt; features
 
-2.  Add json config file:
+2.  Add in to json config file (i.e in lms.env.json):
     ```python
     'EDX_ENTERPRISE_API_CLIENT_ID': " Your edX Enterprise Client Id",
     'EDX_ENTERPRISE_API_CLIENT_SECRET': "Your edX Enterprise Client Secret",
